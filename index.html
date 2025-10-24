@@ -1,443 +1,400 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Anchor Vipul Ranaware — Reviews</title>
-  <meta name="description" content="Quick review templates for Anchor Vipul Ranaware — copy and post on Google Reviews." />
-  <style>
-    :root{
-      --gold-1:#ffcc00;
-      --gold-2:#c9a12f;
-      --bg-1:#000;
-      --card-bg:#0f0f0f;
-      --glass: rgba(0,0,0,0.85);
-      --max-width:1100px;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anchor Vipul Ranaware - Reviews</title>
+<style>
+  body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: radial-gradient(circle at top left, #0a0a0a, #000);
+    color: #fff;
+    text-align: center;
+    overflow-x: hidden;
+  }
+  .header-tabs {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #000;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    border-bottom: 1px solid gold;
+    z-index: 1000;
+    padding: 15px 0 10px;
+  }
+  .header-tabs h1 {
+    font-size: 28px;
+    background: linear-gradient(90deg, #ffcc00, #c9a12f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+  }
+  .header-tabs p {
+    color: gold;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 5px 0 10px;
+  }
+  .tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .tab {
+    background: linear-gradient(90deg, #ffcc00, #c9a12f);
+    color: black;
+    font-weight: bold;
+    border-radius: 50px;
+    padding: 10px 28px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+    transition: 0.3s;
+  }
+  .tab:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.7);
+  }
+  .tab.active {
+    background: linear-gradient(90deg, #ffe066, #ffd42f);
+    box-shadow: 0 0 25px rgba(255, 215, 0, 1);
+  }
+  .slider-wrapper { display: none; }
+  .slider-wrapper.active { display: block; }
+  .reviews-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 140px 20px 40px;
+  }
+  .reviews-container .card:first-child { margin-top: 20px; }
+  @media (min-width: 768px) {
+    .reviews-container {
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 140px 20px 60px;
     }
-    html { scroll-behavior: smooth; }
-    body{
-      margin:0;
-      font-family: Inter, Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-      background: radial-gradient(circle at 10% 10%, #0a0a0a 0%, #000 40%);
-      color:#fff;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.45;
-    }
-
-    /* FIXED HEADER + TAB BAR */
-    .topbar {
-      position:fixed;
-      top:0;
-      left:0;
-      right:0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.95), rgba(0,0,0,0.85));
-      backdrop-filter: blur(6px);
-      border-bottom:1px solid rgba(255,215,0,0.06);
-      z-index:9999;
-      padding:10px 0 6px;
-    }
-    .topbar-inner{
-      max-width:var(--max-width);
-      margin:0 auto;
-      padding:6px 20px;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-	  text-align:center;
-    }
-    .brand {
-      text-align:center;
-    }
-    .brand h1{
-      margin:0;
-      font-size:18px;
-      letter-spacing:0.6px;
-      font-weight:700;
-      background: linear-gradient(90deg,var(--gold-1),var(--gold-2));
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-    }
-    .contact {
-      text-align:center;
-      font-size:16x;
-    }
-    .contact .phone, .contact .email{
-      display:block;
-      background: linear-gradient(90deg,var(--gold-1),var(--gold-2));
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      font-weight:600;
-    }
-
-    /* TABS */
-    .tabs-wrap{
-      margin-top:8px;
-      display:flex;
-      justify-content:center;
-      width:100%;
-    }
-    .tabs{
-      display:flex;
-      gap:10px;
-      padding:8px;
-      border-radius:999px;
-      background: rgba(255,215,0,0.04);
-      box-shadow: 0 4px 30px rgba(0,0,0,0.6);
-    }
-    .tab{
-      padding:10px 22px;
-      border-radius:40px;
-      background: linear-gradient(90deg,var(--gold-1),var(--gold-2));
-      color: black;
-      font-weight:700;
-      cursor:pointer;
-      box-shadow: 0 6px 18px rgba(255,215,0,0.12);
-      transition: transform .14s ease, box-shadow .14s ease;
-      user-select:none;
-    }
-    .tab.inactive{
-      background: transparent;
-      color: #d9c06a;
-      border:1px solid rgba(255,215,0,0.05);
-      box-shadow:none;
-      transform:none;
-    }
-    .tab:hover{ transform:translateY(-3px) scale(1.02); box-shadow:0 10px 30px rgba(255,215,0,0.18); }
-
-    /* PAGE CONTENT */
-    main{
-      max-width: var(--max-width);
-      margin: 120px auto 80px; /* space for fixed header */
-      padding: 20px;
-    }
-    .intro{
-      text-align:center;
-      margin-bottom:18px;
-    }
-    .intro p{
-      color:#d9c06a;
-      margin:24px 0 0;
-      font-weight:600;
-    }
-    /* REVIEW CARDS */
-    .reviews-grid{
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap:18px;
-      align-items:start;
-    }
-    .card{
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border:1px solid rgba(255,215,0,0.04);
-      padding:18px;
-      border-radius:12px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
-      color:#fff;
-    }
-    .card p{ margin:0 0 12px; font-size:15px; color:#f8f6f0; }
-    .card .btn{
-      display:inline-block;
-      width:100%;
-      text-align:center;
-      padding:12px;
-      border-radius:10px;
-      font-weight:800;
-      cursor:pointer;
-      background: linear-gradient(90deg,var(--gold-1),var(--gold-2));
-      color:#000;
-      border:none;
-      box-shadow: 0 8px 20px rgba(255,215,0,0.12);
-    }
-    .card .btn:active{ transform:translateY(1px); }
-
-    /* Back to top button */
-    #backToTop {
-      position: fixed;
-      right: 18px;
-      bottom: 22px;
-      background: linear-gradient(90deg,var(--gold-1),var(--gold-2));
-      color: black;
-      font-weight:700;
-      padding:10px 14px;
-      border-radius:8px;
-      border:none;
-      box-shadow:0 10px 30px rgba(255,215,0,0.14);
-      display:none;
-      z-index:9998;
-      cursor:pointer;
-    }
-
-    /* Footer */
-    footer{
-      text-align:center;
-      color: #bba76f;
-      margin-top:32px;
-      padding:24px 6px;
-      border-top:1px solid rgba(255,215,0,0.05);
-      font-size:13px;
-    }
-
-    /* Responsive tweaks */
-    @media (max-width:520px){
-      .topbar-inner{ padding:10px; }
-      .brand h1{ font-size:20px; }
-      .tabs{ gap:6px; padding:6px; }
-      .tab{ padding:8px 14px; font-size:14px; }
-      main{ margin-top:110px; padding:12px; }
-      #backToTop{ right:12px; bottom:14px; padding:8px 10px; font-size:13px; }
-    }
-
-    /* fast scroll feel: small scroll snap */
-    .reviews-grid { scroll-behavior: auto; }
-  </style>
+    .reviews-container .card:first-child { margin-top: 0; }
+  }
+  .card {
+    background: #111;
+    color: #f5f5f5;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+    padding: 25px;
+    text-align: left;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    word-break: break-word;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
+  }
+  .card p {
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 18px;
+  }
+  button {
+    background: linear-gradient(90deg, #c9a12f, #ffcc00);
+    color: black;
+    border: none;
+    padding: 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    width: 100%;
+    transition: 0.3s;
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+    letter-spacing: 0.5px;
+  }
+  button:hover {
+    background: linear-gradient(90deg, #ffda47, #ffb300);
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+  }
+  .popup, .thankyou {
+    visibility: hidden;
+    background: gold;
+    color: black;
+    font-weight: bold;
+    padding: 15px 25px;
+    border-radius: 10px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    z-index: 999;
+    transition: visibility 0s, opacity 0.4s ease;
+    opacity: 0;
+  }
+  .popup.show, .thankyou.show { visibility: visible; opacity: 1; }
+  footer {
+    margin-top: 40px;
+    padding: 20px 0;
+    color: gold;
+    font-size: 14px;
+    border-top: 1px solid rgba(255, 215, 0, 0.3);
+  }
+  #backToTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(90deg, #ffcc00, #c9a12f);
+    color: black;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    display: none;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+    transition: 0.3s;
+    z-index: 999;
+  }
+  #backToTop:hover { transform: scale(1.1); box-shadow: 0 0 25px rgba(255, 215, 0, 0.8); }
+</style>
 </head>
 <body>
 
-  <div class="topbar" role="banner" aria-hidden="false" style="background: rgba(0,0,0,0.85);">
-    <div class="topbar-inner">
-      <div class="brand">
-        <h1>Anchor Vipul Ranaware</h1>
-      </div>
-
-      <div class="contact" aria-label="Contact information">
-        <span class="phone">📞 9860035494</span>
-        <span class="email">✉️ vipulranaware8@gmail.com</span>
-      </div>
-    </div>
-
-    <div class="tabs-wrap" style="display:flex;justify-content:center;">
-      <div class="tabs" role="tablist" aria-label="Language tabs">
-        <div class="tab" id="tab-english" role="tab" aria-controls="english" tabindex="0">English</div>
-        <div class="tab inactive" id="tab-hindi" role="tab" aria-controls="hindi" tabindex="0">हिन्दी</div>
-        <div class="tab inactive" id="tab-marathi" role="tab" aria-controls="marathi" tabindex="0">मराठी</div>
-      </div>
-    </div>
+<div class="header-tabs">
+  <h1>Anchor Vipul Ranaware</h1>
+  <p>📞 9860035494</p>
+  <div class="tabs">
+    <div class="tab active" data-lang="english">English</div>
+    <div class="tab" data-lang="hindi">हिन्दी</div>
+    <div class="tab" data-lang="marathi">मराठी</div>
   </div>
+</div>
 
-  <main>
-    <section class="intro">
-      <h2 style="margin:0;font-size:20px;color:#fff;">Leave a quick review</h2>
-      <p>Choose a template below — tap <strong>Copy & Post Review</strong> to submit on Google.</p>
-    </section>
+<div id="english" class="slider-wrapper active"><div id="english-reviews" class="reviews-container"></div></div>
+<div id="hindi" class="slider-wrapper"><div id="hindi-reviews" class="reviews-container"></div></div>
+<div id="marathi" class="slider-wrapper"><div id="marathi-reviews" class="reviews-container"></div></div>
 
-    <section id="english" class="lang-section" data-lang="english">
-      <div class="reviews-grid" id="english-reviews" aria-live="polite"></div>
-    </section>
+<div id="popup" class="popup">✅ Copied! Now paste it in Google Reviews.</div>
+<div id="thankyou" class="thankyou"></div>
+<button id="backToTop" title="Back to Top">↑</button>
 
-    <section id="hindi" class="lang-section" data-lang="hindi" style="display:none">
-      <div class="reviews-grid" id="hindi-reviews" aria-live="polite"></div>
-    </section>
+<footer>© 2025 Anchor Vipul Ranaware | All Rights Reserved</footer>
 
-    <section id="marathi" class="lang-section" data-lang="marathi" style="display:none">
-      <div class="reviews-grid" id="marathi-reviews" aria-live="polite"></div>
-    </section>
-  </main>
+<script>
+const reviews = {
+  english:[
+"⭐️⭐️⭐️⭐️⭐️ Vipul hosted our wedding reception perfectly — full of energy and charm!",
+"⭐️⭐️⭐️⭐️⭐️ Brilliant performance by Vipul! The crowd loved every moment.",
+"⭐️⭐️⭐️⭐️⭐️ His anchoring kept the event alive and joyful throughout.",
+"⭐️⭐️⭐️⭐️⭐️ Vipul connects beautifully with the audience — pure entertainer!",
+"⭐️⭐️⭐️⭐️⭐️ Professional, confident, and full of enthusiasm.",
+"⭐️⭐️⭐️⭐️⭐️ Loved his energy and voice modulation — top-notch anchor.",
+"⭐️⭐️⭐️⭐️⭐️ Vipul made the evening memorable for everyone.",
+"⭐️⭐️⭐️⭐️⭐️ Excellent sense of humor and quick wit.",
+"⭐️⭐️⭐️⭐️⭐️ A perfect host for corporate and family events alike.",
+"⭐️⭐️⭐️⭐️⭐️ His stage presence is unmatched!",
+"⭐️⭐️⭐️⭐️⭐️ Vipul brings life to the stage — amazing energy!",
+"⭐️⭐️⭐️⭐️⭐️ Great coordination and crowd engagement.",
+"⭐️⭐️⭐️⭐️⭐️ Everyone enjoyed the show — Vipul did an awesome job.",
+"⭐️⭐️⭐️⭐️⭐️ Truly a professional and talented anchor.",
+"⭐️⭐️⭐️⭐️⭐️ Vipul knows how to make every guest feel involved.",
+"⭐️⭐️⭐️⭐️⭐️ Superb performance, great communication skills!",
+"⭐️⭐️⭐️⭐️⭐️ Perfect timing, humor, and audience connection.",
+"⭐️⭐️⭐️⭐️⭐️ Vipul has a magnetic stage presence!",
+"⭐️⭐️⭐️⭐️⭐️ Excellent control over flow and tone of the event.",
+"⭐️⭐️⭐️⭐️⭐️ Entertaining, confident, and creative anchor.",
+"⭐️⭐️⭐️⭐️⭐️ The best host we’ve ever had for our family function.",
+"⭐️⭐️⭐️⭐️⭐️ Vipul added spark and fun to our celebration.",
+"⭐️⭐️⭐️⭐️⭐️ Engaging and professional — highly recommended.",
+"⭐️⭐️⭐️⭐️⭐️ The event was lively and fun thanks to him.",
+"⭐️⭐️⭐️⭐️⭐️ Vipul made every moment memorable!",
+"⭐️⭐️⭐️⭐️⭐️ Perfect balance of humor and professionalism.",
+"⭐️⭐️⭐️⭐️⭐️ Guests couldn’t stop laughing and cheering.",
+"⭐️⭐️⭐️⭐️⭐️ Vipul’s anchoring kept us hooked till the end.",
+"⭐️⭐️⭐️⭐️⭐️ Truly a master of ceremonies!",
+"⭐️⭐️⭐️⭐️⭐️ His enthusiasm lifted everyone’s spirits.",
+"⭐️⭐️⭐️⭐️⭐️ Brilliant at engaging people of all ages.",
+"⭐️⭐️⭐️⭐️⭐️ Vipul’s anchoring skills are next level!",
+"⭐️⭐️⭐️⭐️⭐️ Great at reading the audience mood.",
+"⭐️⭐️⭐️⭐️⭐️ Super charming and dynamic performance.",
+"⭐️⭐️⭐️⭐️⭐️ Vipul makes every event unforgettable!",
+"⭐️⭐️⭐️⭐️⭐️ Best anchor for weddings and parties.",
+"⭐️⭐️⭐️⭐️⭐️ His confidence is inspiring.",
+"⭐️⭐️⭐️⭐️⭐️ Vipul truly owns the stage.",
+"⭐️⭐️⭐️⭐️⭐️ The event ran so smoothly under his hosting.",
+"⭐️⭐️⭐️⭐️⭐️ Vipul made it magical — great energy!",
+"⭐️⭐️⭐️⭐️⭐️ Amazing charisma and humor.",
+"⭐️⭐️⭐️⭐️⭐️ Keeps everyone smiling and engaged.",
+"⭐️⭐️⭐️⭐️⭐️ Vipul made the night unforgettable!",
+"⭐️⭐️⭐️⭐️⭐️ Best entertainment of the evening!",
+"⭐️⭐️⭐️⭐️⭐️ Everyone praised his anchoring.",
+"⭐️⭐️⭐️⭐️⭐️ Vipul truly knows how to host a crowd!",
+"⭐️⭐️⭐️⭐️⭐️ Lively, cheerful, and fun host.",
+"⭐️⭐️⭐️⭐️⭐️ Loved every second of his performance.",
+"⭐️⭐️⭐️⭐️⭐️ Vipul’s voice and confidence are amazing.",
+"⭐️⭐️⭐️⭐️⭐️ Highly talented and humble anchor."
+  ],
+  hindi:[
+"⭐️⭐️⭐️⭐️⭐️ विपुल रनवरे ने शादी के समारोह को शानदार ढंग से एंकर किया।",
+"⭐️⭐️⭐️⭐️⭐️ उनका उत्साह और अंदाज सभी को बहुत पसंद आया।",
+"⭐️⭐️⭐️⭐️⭐️ कार्यक्रम में उनका जुड़ाव अद्भुत था।",
+"⭐️⭐️⭐️⭐️⭐️ विपुल की प्रस्तुति ने माहौल को जीवंत बना दिया।",
+"⭐️⭐️⭐️⭐️⭐️ वे हर मेहमान को शामिल महसूस कराते हैं।",
+"⭐️⭐️⭐️⭐️⭐️ उनके ह्यूमर और संवाद कौशल ने सभी को प्रभावित किया।",
+"⭐️⭐️⭐️⭐️⭐️ कार्यक्रम में उनका नियंत्रण शानदार था।",
+"⭐️⭐️⭐️⭐️⭐️ विपुल ने सभी उम्र के लोगों को आनंदित किया।",
+"⭐️⭐️⭐️⭐️⭐️ उनका मंच पर आत्मविश्वास अद्वितीय है।",
+"⭐️⭐️⭐️⭐️⭐️ सभी ने उनकी प्रस्तुति की सराहना की।",
+"⭐️⭐️⭐️⭐️⭐️ विपुल ने समारोह को यादगार बना दिया।",
+"⭐️⭐️⭐️⭐️⭐️ उनका उत्साह सभी को जोड़े रखता है।",
+"⭐️⭐️⭐️⭐️⭐️ प्रस्तुति के दौरान उनका ऊर्जा स्तर ऊँचा रहा।",
+"⭐️⭐️⭐️⭐️⭐️ वे हर पल का आनंद लेने लायक बनाते हैं।",
+"⭐️⭐️⭐️⭐️⭐️ उनका संवाद और ह्यूमर अद्भुत है।",
+"⭐️⭐️⭐️⭐️⭐️ विपुल ने सभी को खुश और उत्साहित रखा।",
+"⭐️⭐️⭐️⭐️⭐️ वे समारोह को सहज और मजेदार बनाते हैं।",
+"⭐️⭐️⭐️⭐️⭐️ उनका आत्मविश्वास प्रेरणादायक है।",
+"⭐️⭐️⭐️⭐️⭐️ विपुल हर कार्यक्रम को जीवंत बनाते हैं।",
+"⭐️⭐️⭐️⭐️⭐️ उनका शैली और अंदाज सभी को भाया।",
+"⭐️⭐️⭐️⭐️⭐️ वे हर दर्शक को शामिल महसूस कराते हैं।",
+"⭐️⭐️⭐️⭐️⭐️ उनका मंच पर नियंत्रण अद्भुत है।",
+"⭐️⭐️⭐️⭐️⭐️ वे हर समारोह को यादगार बनाते हैं।",
+"⭐️⭐️⭐️⭐️⭐️ विपुल की एंकरिंग में ऊर्जा और शैली है।",
+"⭐️⭐️⭐️⭐️⭐️ उनका आकर्षण सभी को मंत्रमुग्ध कर देता है।",
+"⭐️⭐️⭐️⭐️⭐️ वे हर पल का आनंद लेने लायक बनाते हैं।",
+"⭐️⭐️⭐️⭐️⭐️ उनके ह्यूमर ने सभी को आनंदित किया।",
+"⭐️⭐️⭐️⭐️⭐️ कार्यक्रम उनके कारण सुचारू रूप से चला।",
+"⭐️⭐️⭐️⭐️⭐️ वे प्रत्येक मेहमान को जोड़ते हैं।",
+"⭐️⭐️⭐️⭐️⭐️ उनका प्रस्तुति कौशल असाधारण है।",
+"⭐️⭐️⭐️⭐️⭐️ विपुल हर समय उत्साही रहते हैं।",
+"⭐️⭐️⭐️⭐️⭐️ उनके प्रभाव ने सभी को जोड़ा रखा।",
+"⭐️⭐️⭐️⭐️⭐️ वे सभी को मजेदार अनुभव प्रदान करते हैं।",
+"⭐️⭐️⭐️⭐️⭐️ उनका अंदाज हर मौके के लिए उपयुक्त है।",
+"⭐️⭐️⭐️⭐️⭐️ विपुल ने सभी को हंसाया और आनंदित किया।",
+"⭐️⭐️⭐️⭐️⭐️ वे प्रत्येक समारोह को विशेष बनाते हैं।",
+"⭐️⭐️⭐️⭐️⭐️ उनका संवाद कौशल शानदार है।",
+"⭐️⭐️⭐️⭐️⭐️ वे माहौल को जीवंत रखते हैं।",
+"⭐️⭐️⭐️⭐️⭐️ उनका उत्साह सभी को प्रेरित करता है।",
+"⭐️⭐️⭐️⭐️⭐️ वे हर पल को खास बनाते हैं।",
+"⭐️⭐️⭐️⭐️⭐️ उनका मंच पर आत्मविश्वास सभी को भाता है।",
+"⭐️⭐️⭐️⭐️⭐️ विपुल का प्रदर्शन शानदार था।",
+"⭐️⭐️⭐️⭐️⭐️ उनका ह्यूमर हर किसी को पसंद आया।",
+"⭐️⭐️⭐️⭐️⭐️ वे समारोह को यादगार बनाते हैं।",
+"⭐️⭐️⭐️⭐️⭐️ उनका अंदाज हर किसी को प्रेरित करता है।",
+"⭐️⭐️⭐️⭐️⭐️ उनका प्रस्तुति कौशल अद्वितीय है।",
+"⭐️⭐️⭐️⭐️⭐️ वे हर कार्यक्रम को मजेदार बनाते हैं।",
+"⭐️⭐️⭐️⭐️⭐️ उनका उत्साह सभी को जोड़ता है।",
+"⭐️⭐️⭐️⭐️⭐️ विपुल ने सभी को आनंदित किया।",
+"⭐️⭐️⭐️⭐️⭐️ वे कार्यक्रम को सहज और रोचक बनाते हैं।",
+"⭐️⭐️⭐️⭐️⭐️ उनका ह्यूमर और अंदाज सभी को भाया।"
+  ],
+  marathi:[
+"⭐️⭐️⭐️⭐️⭐️ विपुल रनवरे यांनी विवाह समारंभ उत्कृष्टपणे एंकर केले.",
+"⭐️⭐️⭐️⭐️⭐️ त्यांच्या ऊर्जा आणि अंदाजाने सर्वांची मने जिंकली.",
+"⭐️⭐️⭐️⭐️⭐️ कार्यक्रमात त्यांचा सहभाग अप्रतिम होता.",
+"⭐️⭐️⭐️⭐️⭐️ विपुलच्या प्रस्तुतीमुळे वातावरण आनंदी राहिले.",
+"⭐️⭐️⭐️⭐️⭐️ ते प्रत्येक पाहुण्याला सहभागी बनवतात.",
+"⭐️⭐️⭐️⭐️⭐️ त्यांच्या विनोद आणि संवाद कौशल्याने सर्व प्रभावित झाले.",
+"⭐️⭐️⭐️⭐️⭐️ कार्यक्रमातील त्यांचे नियंत्रण शानदार होते.",
+"⭐️⭐️⭐️⭐️⭐️ विपुल सर्व वयोगटातील लोकांना आनंदित करतात.",
+"⭐️⭐️⭐️⭐️⭐️ त्यांचा मंचावर आत्मविश्वास अद्वितीय आहे.",
+"⭐️⭐️⭐️⭐️⭐️ सर्वांनी त्यांच्या प्रस्तुतीचे कौतुक केले.",
+"⭐️⭐️⭐️⭐️⭐️ विपुल समारंभ स्मरणीय बनवतात.",
+"⭐️⭐️⭐️⭐️⭐️ त्यांचा उत्साह सर्वांना गुंतवून ठेवतो.",
+"⭐️⭐️⭐️⭐️⭐️ प्रस्तुतीदरम्यान त्यांचा ऊर्जा स्तर उच्च राहिला.",
+"⭐️⭐️⭐️⭐️⭐️ ते प्रत्येक क्षणाचा आनंद घ्यायला लायक बनवतात.",
+"⭐️⭐️⭐️⭐️⭐️ त्यांचा संवाद आणि विनोद अप्रतिम आहे.",
+"⭐️⭐️⭐️⭐️⭐️ विपुल सर्वांना आनंदी आणि उत्साही ठेवतात.",
+"⭐️⭐️⭐️⭐️⭐️ ते समारंभ सुलभ आणि मजेदार बनवतात.",
+"⭐️⭐️⭐️⭐️⭐️ त्यांचा आत्मविश्वास प्रेरणादायी आहे.",
+"⭐️⭐️⭐️⭐️⭐️ विपुल प्रत्येक कार्यक्रमाला जिवंत करतात.",
+"⭐️⭐️⭐️⭐️⭐️ त्यांची शैली आणि अंदाज सर्वांना आवडतो.",
+"⭐️⭐️⭐️⭐️⭐️ ते प्रत्येक प्रेक्षकाला सहभागी बनवतात.",
+"⭐️⭐️⭐️⭐️⭐️ मंचावर त्यांचे नियंत्रण अप्रतिम आहे.",
+"⭐️⭐️⭐️⭐️⭐️ ते प्रत्येक समारंभ स्मरणीय करतात.",
+"⭐️⭐️⭐️⭐️⭐️ विपुलच्या एंकरिंगमध्ये ऊर्जा आणि शैली आहे.",
+"⭐️⭐️⭐️⭐️⭐️ त्यांचा आकर्षण सर्वांना मंत्रमुग्ध करतो.",
+"⭐️⭐️⭐️⭐️⭐️ ते प्रत्येक क्षणाचा आनंद घ्यायला लायक बनवतात.",
+"⭐️⭐️⭐️⭐️⭐️ त्यांच्या विनोदाने सर्वांना आनंद दिला.",
+"⭐️⭐️⭐️⭐️⭐️ कार्यक्रम त्यांच्या मुळे सुरळीत पार पडला.",
+"⭐️⭐️⭐️⭐️⭐️ ते प्रत्येक पाहुण्याला जोडतात.",
+"⭐️⭐️⭐️⭐️⭐️ त्यांचे प्रस्तुती कौशल्य अप्रतिम आहे.",
+"⭐️⭐️⭐️⭐️⭐️ विपुल प्रत्येक क्षणी उत्साही राहतात.",
+"⭐️⭐️⭐️⭐️⭐️ त्यांचा प्रभाव सर्वांना जोडून ठेवतो.",
+"⭐️⭐️⭐️⭐️⭐️ ते सर्वांना मजेदार अनुभव देतात.",
+"⭐️⭐️⭐️⭐️⭐️ त्यांचा अंदाज प्रत्येक संधीसाठी योग्य आहे.",
+"⭐️⭐️⭐️⭐️⭐️ विपुल सर्वांना हसवतात आणि आनंद देतात.",
+"⭐️⭐️⭐️⭐️⭐️ ते प्रत्येक समारंभ खास बनवतात.",
+"⭐️⭐️⭐️⭐️⭐️ त्यांचे संवाद कौशल्य शानदार आहे.",
+"⭐️⭐️⭐️⭐️⭐️ ते वातावरण जिवंत ठेवतात.",
+"⭐️⭐️⭐️⭐️⭐️ त्यांचा उत्साह सर्वांना प्रेरित करतो.",
+"⭐️⭐️⭐️⭐️⭐️ ते प्रत्येक क्षण खास बनवतात.",
+"⭐️⭐️⭐️⭐️⭐️ मंचावर त्यांचा आत्मविश्वास सर्वांना आवडतो.",
+"⭐️⭐️⭐️⭐️⭐️ विपुलचे प्रदर्शन शानदार होते.",
+"⭐️⭐️⭐️⭐️⭐️ त्यांचा विनोद सर्वांना आवडला.",
+"⭐️⭐️⭐️⭐️⭐️ ते समारंभ स्मरणीय करतात.",
+"⭐️⭐️⭐️⭐️⭐️ त्यांचा अंदाज सर्वांना प्रेरित करतो.",
+"⭐️⭐️⭐️⭐️⭐️ त्यांचे प्रस्तुती कौशल्य अद्वितीय आहे.",
+"⭐️⭐️⭐️⭐️⭐️ ते प्रत्येक कार्यक्रम मजेदार बनवतात.",
+"⭐️⭐️⭐️⭐️⭐️ त्यांचा उत्साह सर्वांना जोडतो.",
+"⭐️⭐️⭐️⭐️⭐️ विपुल सर्वांना आनंदित करतात.",
+"⭐️⭐️⭐️⭐️⭐️ ते कार्यक्रम सुलभ आणि रोचक बनवतात.",
+"⭐️⭐️⭐️⭐️⭐️ त्यांचा विनोद आणि अंदाज सर्वांना आवडतो."
+  ]
+};
 
-  <button id="backToTop" aria-label="Back to top">Back to Top</button>
+const thankyouMessages = {
+  english:"🙏 Thank you for reviewing Anchor Vipul Ranaware!",
+  hindi:"🙏 एंकर विपुल रनवरे की समीक्षा करने के लिए धन्यवाद!",
+  marathi:"🙏 अँकर विपुल रनवरे यांचा अभिप्राय दिल्याबद्दल धन्यवाद!"
+};
 
-  <div id="popup" class="popup" role="status" aria-hidden="true" style="position:fixed;left:50%;top:48%;transform:translate(-50%,-50%);padding:14px 20px;border-radius:8px;background:linear-gradient(90deg,var(--gold-1),var(--gold-2));color:black;display:none;z-index:9999;font-weight:800;">✅ Copied! Now paste it in Google Reviews.</div>
+function populateReviews(lang){
+  const container = document.getElementById(`${lang}-reviews`);
+  container.innerHTML = '';
+  reviews[lang].forEach(text=>{
+    const card = document.createElement('div');
+    card.className='card';
+    card.innerHTML=`<p>${text}</p><button onclick="copyAndRedirect(this,'${lang}')">Copy & Post Review</button>`;
+    container.appendChild(card);
+  });
+}
+['english','hindi','marathi'].forEach(populateReviews);
 
-  <div id="thankyou" class="popup" role="status" aria-hidden="true" style="position:fixed;left:50%;top:48%;transform:translate(-50%,-50%);padding:14px 20px;border-radius:8px;background:rgba(255,215,0,0.95);color:black;display:none;z-index:9999;font-weight:800;"></div>
+document.querySelectorAll('.tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    const lang=tab.dataset.lang;
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.slider-wrapper').forEach(s=>s.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById(lang).classList.add('active');
+  });
+});
 
-  <footer>© 2025 Anchor Vipul Ranaware | All Rights Reserved</footer>
+function copyAndRedirect(button,lang){
+  const text=button.previousElementSibling.innerText;
+  navigator.clipboard.writeText(text).then(()=>{
+    const popup=document.getElementById('popup');
+    popup.classList.add('show');
+    setTimeout(()=>{
+      popup.classList.remove('show');
+      const thankyou=document.getElementById('thankyou');
+      thankyou.innerText=thankyouMessages[lang];
+      thankyou.classList.add('show');
+      setTimeout(()=>{
+        thankyou.classList.remove('show');
+        window.location.href="https://www.google.com/search?q=my%20business";
+      },2000);
+    },1500);
+  });
+}
 
-  <script>
-    // ====== CONFIG ======
-    const GOOGLE_REVIEW_LINK = "https://www.google.com/search?q=my%20business&mat=Cc53QI7fRpDFEkwBTVDHnpuAsVd7VhuwQML20U9iDO11djgMTaZoeI8ttrGngUe0_uLRIcirdJQE4kBXkXFa9ywNIQqz1muDVnv7yadQfFz931YkCYtM&hl=en-GB&authuser=0&ved=0CAEQrMcEahcKEwiQ2-eFzLOQAxUAAAAAHQAAAAAQAg";
-    const REVIEWS_COUNT = 40; // per language
-    // sample varied templates (we'll generate arrays programmatically)
-    function generateEnglishTemplates(){
-      const base = [
-        "Outstanding hosting by Vipul Ranaware! Professional, energetic, and engaging — highly recommended.",
-        "Vipul made our event lively and smooth. Excellent stage presence and audience interaction.",
-        "Fantastic anchor! Vipul’s humor and professionalism kept everyone entertained all evening.",
-        "We loved Vipul’s bilingual hosting — seamless transitions and great energy throughout.",
-        "A very talented anchor. Clear voice, quick wit, and excellent timing.",
-        "Couldn’t have asked for a better host — Vipul made our day special and fun.",
-        "Highly skilled anchor who connects well with all age groups. Recommend for weddings and corporate events.",
-        "Vipul’s energy lifted the whole event. Very professional and punctual.",
-        "Professional hosting with a personal touch. Guests enjoyed every moment.",
-        "Brilliant performance — Vipul made the program memorable and fun.",
-        "Great communication and stage control. Vipul managed the event perfectly.",
-        "Engaging host with a friendly approach. Would book again.",
-        "Vipul’s hosting style is top-notch — entertaining and respectful.",
-        "He handled unexpected moments smoothly. Very experienced anchor.",
-        "A charismatic host who keeps the audience hooked. Highly recommend!",
-        "Perfect balance of humor and grace. The event went flawlessly.",
-        "Talented, punctual, and full of energy — Vipul is an excellent choice.",
-        "Exceptional hosting that received compliments from all our guests.",
-        "Warm, professional, and very engaging — thank you, Vipul!",
-        "From start to finish, Vipul delivered a fantastic hosting experience."
-      ];
-      // ensure 40 entries by cycling and adding small variations
-      const out = [];
-      for(let i=0;i<REVIEWS_COUNT;i++){
-        const idx = i % base.length;
-        let suffix = (i>=base.length) ? ` (${i+1})` : '';
-        out.push(base[idx] + suffix);
-      }
-      return out;
-    }
-
-    function generateHindiTemplates(){
-      const base = [
-        "विपुल रनवरे ने कार्यक्रम को शानदार बनाया! उनका जोश और पेशेवर अंदाज शानदार था।",
-        "बहुत अच्छे एंकर — दर्शकों को जोड़े रखने की कला अद्भुत है।",
-        "विपुल की होस्टिंग ने माहौल को जीवित कर दिया। शुक्रिया!",
-        "प्रोफेशनल और उर्जावान प्रस्तुति — हर आयोजन के लिए बढ़िया विकल्प।",
-        "उनकी भाषा और टाइमिंग बेहतरीन है, हम बहुत खुश हैं।",
-        "विपुल ने सभी आयु समूहों के साथ बेहतरीन तालमेल बनाया।",
-        "स्टेज कंट्रोल और संवाद दोनों जबरदस्त थे।",
-        "अद्भुत एनर्जी और विनम्रता — बहुत प्रभावित हुए।",
-        "हर कार्यक्रम Vipul के कारण यादगार बन गया।",
-        "समय का पालन और प्रोफेशनलिज्म — दोनों उत्कृष्ट।",
-        "उनकी उपस्थिति ने कार्यक्रम का स्तर बढ़ा दिया।",
-        "मज़ेदार और गंभीर दोनों हिस्सों में संतुलन बहुत अच्छा।",
-        "विपुल ने अप्रत्याशित स्थिति को भी बहुत अच्छा संभाला।",
-        "उत्साही, मार्मिक और बहुत प्रभावशाली होस्ट।",
-        "प्रशंसनीय प्रस्तुति — हम फिर से बुलाएंगे।",
-        "सभी अतिथियों ने उनकी तारीफ की।",
-        "अत्यंत पेशेवर और सुलझा हुआ एंकर।",
-        "उनकी होस्टिंग ने हमारा कार्यक्रम बेहतर बनाया।",
-        "हास्य और शिष्टता का सुंदर मेल।",
-        "सर्वांगीण रूप से बेहतरीन प्रस्तुति।"
-      ];
-      const out = [];
-      for(let i=0;i<REVIEWS_COUNT;i++){
-        const idx = i % base.length;
-        const suffix = (i>=base.length) ? ` (${i+1})` : '';
-        out.push(base[idx] + suffix);
-      }
-      return out;
-    }
-
-    function generateMarathiTemplates(){
-      const base = [
-        "विपुल रनवरे यांनी कार्यक्रमाची शान वाढवली! त्यांची ऊर्जा अप्रतिम होती.",
-        "अँकरVipul ची सूत्रसंचालन शैली जबरदस्त आहे — सर्वांनी आनंद घेतला.",
-        "त्यांच्या.presentational शैलीने कार्यक्रम अधिक संस्मरणीय झाला.",
-        "उत्कृष्ट संवाद आणि उत्तम वेळेचे पालन — धन्यवाद विपुल!",
-        "विविध वयोगटातील प्रेक्षकांशी जोडणारी अद्भुत कला.",
-        "मंच नियंत्रण आणि विनोदाची समतोल मोजणी अप्रतिम.",
-        "प्रोफेशनल अँकरिंग ज्याने कार्यक्रमात रंग भरला.",
-        "विपुलच्या एनर्जीने सर्व परखड झाले — खूप छान!",
-        "स्टेजवरील आत्मविश्वास आणि सौजन्य मनाला भावले.",
-        "आमच्या कार्यक्रमाला त्यांनी खास बनवले.",
-        "उत्तम वेळेचे पालन, प्रेक्षकांचे संवर्धन — सर्वोत्तम.",
-        "विपुल यांच्या सादरीकरणाने कार्यक्रमात उत्साह आला.",
-        "हास्य आणि आदर या दोन्हीचा सुंदर संयोग.",
-        "तत्काळ निर्णय आणि सुलभ हाताळणी — फारच छान.",
-        "आम्हाला त्यांच्या कार्यशैलीने खूप समाधान मिळाले.",
-        "अधिकृत आणि आनंदी — Vipul एक आदर्श होस्ट आहे.",
-        "प्रेक्षकांनी खूप कौतुक केले.",
-        "कार्यक्रमाची उर्जा आणि आनंद त्यांनी वाढवला.",
-        "संबंधित संवाद कौशल्य आणि वेळेचे पालन उत्कृष्ट.",
-        "सर्वांनाच आवडलेली सादरीकरण शैली."
-      ];
-      const out = [];
-      for(let i=0;i<REVIEWS_COUNT;i++){
-        const idx = i % base.length;
-        const suffix = (i>=base.length) ? ` (${i+1})` : '';
-        out.push(base[idx] + suffix);
-      }
-      return out;
-    }
-
-    // populate on load
-    const english = generateEnglishTemplates();
-    const hindi = generateHindiTemplates();
-    const marathi = generateMarathiTemplates();
-
-    function renderReviews(list, containerId){
-      const container = document.getElementById(containerId);
-      container.innerHTML = '';
-      list.forEach((text, i) => {
-        const card = document.createElement('article');
-        card.className = 'card';
-        card.innerHTML = `<p>${text}</p><button class="btn" data-index="${i}" onclick="copyAndRedirect(this,'${containerId.split('-')[0]}')">Copy & Post Review</button>`;
-        container.appendChild(card);
-      });
-    }
-
-    renderReviews(english, 'english-reviews');
-    renderReviews(hindi, 'hindi-reviews');
-    renderReviews(marathi, 'marathi-reviews');
-
-    // TAB logic
-    const tabs = document.querySelectorAll('.tab');
-    tabs.forEach(t => {
-      t.addEventListener('click', e => {
-        const id = t.id.replace('tab-','');
-        // set active styles
-        tabs.forEach(x=>x.classList.add('inactive'));
-        t.classList.remove('inactive');
-        // show sections
-        document.querySelectorAll('.lang-section').forEach(s=>s.style.display='none');
-        document.getElementById(id).style.display = 'block';
-        // quick focus top of content
-        window.scrollTo({top:130,behavior:'auto'});
-      });
-      t.addEventListener('keydown', ev => { if(ev.key==='Enter'||ev.key===' ') t.click(); });
-    });
-
-    // COPY & REDIRECT logic
-    function copyAndRedirect(button, lang){
-      const text = button.previousElementSibling.innerText;
-      navigator.clipboard.writeText(text).then(()=>{
-        showPopup('popup',true);
-        setTimeout(()=>{
-          showPopup('popup',false);
-          showThankYou(lang);
-          setTimeout(()=>{
-            // redirect to Google Review
-            window.location.href = GOOGLE_REVIEW_LINK;
-          },1800);
-        },1200);
-      }).catch(()=>{
-        alert('Unable to copy automatically — please long-press the text and copy it manually.');
-      });
-    }
-
-    function showPopup(id, show){
-      const el = document.getElementById(id);
-      if(show){
-        el.style.display='block';
-        el.setAttribute('aria-hidden','false');
-      } else {
-        el.style.display='none';
-        el.setAttribute('aria-hidden','true');
-      }
-    }
-
-    function showThankYou(lang){
-      const t = document.getElementById('thankyou');
-      const messages = {
-        english: '🙏 Thank you for reviewing Anchor Vipul Ranaware!',
-        hindi: '🙏 एंकर विपुल रनवरे की समीक्षा करने के लिए धन्यवाद!',
-        marathi: '🙏 अँकर विपुल रनवरे यांचा अभिप्राय दिल्याबद्दल धन्यवाद!'
-      };
-      t.innerText = messages[lang] || messages.english;
-      t.style.display='block';
-      setTimeout(()=>{ t.style.display='none'; },1600);
-    }
-
-    // Back to top
-    const backBtn = document.getElementById('backToTop');
-    window.addEventListener('scroll', ()=>{
-      if(window.scrollY > 450) backBtn.style.display='block'; else backBtn.style.display='none';
-    });
-    backBtn.addEventListener('click', ()=> window.scrollTo({top:120,behavior:'smooth'}));
-
-    // fast scroll feel: add small helper to jump to content when tab clicked
-    document.getElementById('tab-english').addEventListener('click', ()=>window.scrollTo({top:130,behavior:'auto'}));
-
-    // initial tab setup: set english active, others inactive
-    document.getElementById('tab-english').classList.remove('inactive');
-    document.getElementById('tab-hindi').classList.add('inactive');
-    document.getElementById('tab-marathi').classList.add('inactive');
-
-  </script>
+const backToTop=document.getElementById("backToTop");
+window.addEventListener("scroll",()=>{backToTop.style.display=window.scrollY>400?"block":"none";});
+backToTop.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"});});
+</script>
 </body>
 </html>
-
